@@ -9,10 +9,11 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.22.0",
     "react-icons": "^4.12.0",
+    "react-router-dom": "^6.22.0",
     "react-scripts": "5.0.1"
   },
   "devDependencies": {
@@ -31,4 +32,4 @@
       "last 1 safari version"
     ]
   }
-} 
+}

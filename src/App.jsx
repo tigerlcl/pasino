@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Analytics } from "@vercel/analytics/react"
 import Home from './pages/Home';
 import Rules from './pages/Rules';
 import PaperArena from './pages/PaperArena';
@@ -25,6 +26,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/faq" element={<FAQ />} />
         </Routes>
+        <Analytics />
       </div>
     </Router>
   );
