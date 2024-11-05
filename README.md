@@ -62,6 +62,7 @@ npm start
 ```
 
 ## Project Structure
+```
 src/
 ├── components/ # Reusable UI components
 │ ├── Header.jsx
@@ -82,6 +83,7 @@ src/
 │ └── ...
 ├── App.jsx # Main app component
 └── index.jsx # Entry point
+```
 
 ## Key Features Implementation
 
