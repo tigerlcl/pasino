@@ -1,0 +1,12 @@
+:root {
+  /* Professional Academic Theme */
+  --primary-color: #2c3e50;
+  --accept-color: #27ae60;
+  --reject-color: #e74c3c;
+  --accent-color: #3498db;
+  --background-light: #f5f6fa;
+  
+  /* Typography */
+  --font-heading: 'Source Sans Pro', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+} 

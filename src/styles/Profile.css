@@ -1,0 +1,113 @@
+.profile-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.profile-header h1 {
+  color: #264653;
+  margin-bottom: 2rem;
+}
+
+.profile-stats {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin-bottom: 2rem;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-item span {
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.stat-item p {
+  font-size: 1.5rem;
+  color: #2A9D8F;
+  font-weight: bold;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.social-links a {
+  color: #264653;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #2A9D8F;
+}
+
+.bidding-history {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.bidding-history h2 {
+  color: #264653;
+  margin-bottom: 2rem;
+}
+
+.bidding-history table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.bidding-history th,
+.bidding-history td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.bidding-history th {
+  color: #666;
+  font-weight: 600;
+}
+
+.coin-icon {
+  color: #F4A261;
+  margin-right: 0.5rem;
+}
+
+.won {
+  color: #27ae60;
+}
+
+.lost {
+  color: #e74c3c;
+}
+
+@media (max-width: 768px) {
+  .profile-page {
+    padding: 2rem 1rem;
+  }
+
+  .profile-stats {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .bidding-history {
+    overflow-x: auto;
+  }
+} 
