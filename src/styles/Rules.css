@@ -1,0 +1,115 @@
+.rules-page {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.rules-page h1 {
+  text-align: center;
+  color: #264653;
+  margin-bottom: 3rem;
+}
+
+.flowchart-section {
+  margin-bottom: 4rem;
+}
+
+.flowchart-section h2 {
+  color: #2A9D8F;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.flowchart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 2rem;
+  background: rgba(42, 157, 143, 0.1);
+  border-radius: 12px;
+}
+
+.flowchart-step {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  background: #264653;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.flowchart-arrow {
+  color: #2A9D8F;
+  font-size: 2rem;
+  margin: 0 1rem;
+}
+
+.dialcoin-section {
+  margin-top: 4rem;
+}
+
+.dialcoin-section h2 {
+  color: #264653;
+  margin-bottom: 2rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.coin-icon {
+  color: #F4A261;
+}
+
+.dialcoin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.dialcoin-card {
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.dialcoin-card:hover {
+  transform: translateY(-5px);
+}
+
+.dialcoin-card h3 {
+  color: #2A9D8F;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .rules-page {
+    padding: 2rem 1rem;
+  }
+  
+  .flowchart {
+    flex-direction: column;
+  }
+  
+  .flowchart-arrow {
+    transform: rotate(90deg);
+  }
+} 
