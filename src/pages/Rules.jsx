@@ -1,71 +1,159 @@
 import React from 'react';
-import '../styles/Rules.css';
+import {
+  Box,
+  Container,
+  Heading,
+  Text,
+  Grid,
+  VStack,
+  HStack,
+  useColorMode,
+  Flex
+} from '@chakra-ui/react';
 import CoinIcon from '../components/CoinIcon';
 
 const Rules = () => {
-  return (
-    <div className="rules-page">
-      <h1>How Panvas Works</h1>
-      
-      <div className="flowchart-section">
-        <h2>Prediction Process</h2>
-        <div className="flowchart">
-          <div className="flowchart-step">
-            <div className="step-number">1</div>
-            <div className="step-content">
-              <h3>Browse Papers</h3>
-              <p>Explore papers under review from various domains</p>
-            </div>
-          </div>
-          <div className="flowchart-arrow">→</div>
-          <div className="flowchart-step">
-            <div className="step-number">2</div>
-            <div className="step-content">
-              <h3>Place Prediction</h3>
-              <p>Bet DialCoins on Accept/Reject outcome</p>
-            </div>
-          </div>
-          <div className="flowchart-arrow">→</div>
-          <div className="flowchart-step">
-            <div className="step-number">3</div>
-            <div className="step-content">
-              <h3>Wait Result</h3>
-              <p>Paper review process completes</p>
-            </div>
-          </div>
-          <div className="flowchart-arrow">→</div>
-          <div className="flowchart-step">
-            <div className="step-number">4</div>
-            <div className="step-content">
-              <h3>Earn Rewards</h3>
-              <p>Win or lose DialCoins based on accuracy</p>
-            </div>
-          </div>
-        </div>
-      </div>
+  const { colorMode } = useColorMode();
+  const bgColor = colorMode === 'dark' ? 'gray.800' : 'white';
+  const textColor = colorMode === 'dark' ? 'white' : 'gray.800';
+  const cardBg = colorMode === 'dark' ? 'whiteAlpha.100' : 'gray.50';
 
-      <div className="dialcoin-section">
-        <h2><CoinIcon className="coin-icon" /> DialCoin System</h2>
-        <div className="dialcoin-grid">
-          <div className="dialcoin-card">
-            <h3>What is DialCoin?</h3>
-            <p>DialCoin is our virtual currency for paper prediction betting. Each new user starts with 1000 DialCoins.</p>
-          </div>
-          <div className="dialcoin-card">
-            <h3>How to Earn</h3>
-            <p>Make accurate predictions to earn more DialCoins. The riskier the bet, the higher the potential reward.</p>
-          </div>
-          <div className="dialcoin-card">
-            <h3>How to Spend</h3>
-            <p>Place bets on paper outcomes. Different papers have different betting requirements.</p>
-          </div>
-          <div className="dialcoin-card">
-            <h3>Rewards</h3>
-            <p>Earn bonus DialCoins for prediction streaks and participating in special events.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+  const FlowchartStep = ({ number, title, description }) => (
+    <Box
+      p={6}
+      bg={cardBg}
+      borderRadius="lg"
+      flex="1"
+      minW="200px"
+      transition="transform 0.2s, box-shadow 0.2s"
+      _hover={{
+        transform: 'translateY(-4px)',
+        bg: colorMode === 'dark' ? 'whiteAlpha.200' : 'gray.100'
+      }}
+    >
+      <Box
+        w="36px"
+        h="36px"
+        borderRadius="full"
+        bg={colorMode === 'dark' ? 'purple.500' : 'purple.100'}
+        color={colorMode === 'dark' ? 'white' : 'purple.500'}
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        fontSize="lg"
+        fontWeight="bold"
+        mb={4}
+      >
+        {number}
+      </Box>
+      <Heading size="md" mb={2} color={textColor}>
+        {title}
+      </Heading>
+      <Text color={textColor}>
+        {description}
+      </Text>
+    </Box>
+  );
+
+  return (
+    <Box bg={bgColor} color={textColor} minH="100vh">
+      <Container maxW="container.xl" py={8}>
+        <VStack spacing={12} align="stretch">
+          <Heading
+            as="h1"
+            size="2xl"
+            textAlign="center"
+            mb={8}
+          >
+            How Panvas Works
+          </Heading>
+          
+          {/* Flowchart Section */}
+          <Box>
+            <Heading as="h2" size="xl" mb={6}>
+              Prediction Process
+            </Heading>
+            <Flex
+              direction={{ base: 'column', md: 'row' }}
+              gap={4}
+              align="center"
+            >
+              <FlowchartStep
+                number="1"
+                title="Browse Papers"
+                description="Explore papers under review from various domains"
+              />
+              <Text fontSize="xl" px={2}>→</Text>
+              <FlowchartStep
+                number="2"
+                title="Place Prediction"
+                description="Bet DialCoins on Accept/Reject outcome"
+              />
+              <Text fontSize="xl" px={2}>→</Text>
+              <FlowchartStep
+                number="3"
+                title="Wait Result"
+                description="Paper review process completes"
+              />
+              <Text fontSize="xl" px={2}>→</Text>
+              <FlowchartStep
+                number="4"
+                title="Earn Rewards"
+                description="Win or lose DialCoins based on accuracy"
+              />
+            </Flex>
+          </Box>
+
+          {/* DialCoin Section */}
+          <Box>
+            <HStack spacing={2} mb={6}>
+              <CoinIcon boxSize={6} />
+              <Heading as="h2" size="xl">
+                DialCoin System
+              </Heading>
+            </HStack>
+            <Grid
+              templateColumns={{ base: '1fr', md: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' }}
+              gap={6}
+            >
+              {[
+                {
+                  title: "What is DialCoin?",
+                  description: "DialCoin is our virtual currency for paper prediction betting. Each new user starts with 1000 DialCoins."
+                },
+                {
+                  title: "How to Earn",
+                  description: "Make accurate predictions to earn more DialCoins. The riskier the bet, the higher the potential reward."
+                },
+                {
+                  title: "How to Spend",
+                  description: "Place bets on paper outcomes. Different papers have different betting requirements."
+                },
+                {
+                  title: "Rewards",
+                  description: "Earn bonus DialCoins for prediction streaks and participating in special events."
+                }
+              ].map((card, index) => (
+                <Box 
+                  key={index}
+                  p={6} 
+                  bg={cardBg} 
+                  borderRadius="lg"
+                  transition="transform 0.2s, box-shadow 0.2s"
+                  _hover={{
+                    transform: 'translateY(-4px)',
+                    bg: colorMode === 'dark' ? 'whiteAlpha.200' : 'gray.100'
+                  }}
+                >
+                  <Heading size="md" mb={4}>{card.title}</Heading>
+                  <Text>{card.description}</Text>
+                </Box>
+              ))}
+            </Grid>
+          </Box>
+        </VStack>
+      </Container>
+    </Box>
   );
 };
 

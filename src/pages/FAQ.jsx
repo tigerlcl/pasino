@@ -1,11 +1,25 @@
 import React from 'react';
-import '../styles/FAQ.css';
+import {
+  Box,
+  Container,
+  Heading,
+  SimpleGrid,
+  VStack,
+  Text,
+  useColorMode
+} from '@chakra-ui/react';
 
 const FAQ = () => {
-  const faqs = [
+  const { colorMode } = useColorMode();
+  const headingColor = colorMode === 'light' ? 'gray.700' : 'white';
+  const cardBg = colorMode === 'light' ? 'white' : 'gray.700';
+  const textColor = colorMode === 'light' ? 'gray.600' : 'gray.300';
+  const questionColor = colorMode === 'light' ? 'teal.600' : 'teal.200';
+
+  const faqItems = [
     {
       question: "What is Panvas?",
-      answer: "Panvas (Paper + Canvas) is a research-oriented platform where users can predict the acceptance outcomes of academic papers under review. It combines academic insight with engaging prediction mechanics."
+      answer: "Panvas is a platform where researchers can predict and discuss academic paper outcomes."
     },
     {
       question: "How do DialCoins work?",
@@ -34,17 +48,53 @@ const FAQ = () => {
   ];
 
   return (
-    <div className="faq-page">
-      <h1>Frequently Asked Questions</h1>
-      <div className="faq-grid">
-        {faqs.map((faq, index) => (
-          <div key={index} className="faq-card">
-            <h3>{faq.question}</h3>
-            <p>{faq.answer}</p>
-          </div>
-        ))}
-      </div>
-    </div>
+    <Box
+      as="section"
+      py={20}
+      minH="calc(100vh - 80px)"
+    >
+      <Container maxW="container.xl">
+        <Heading
+          as="h1"
+          mb={16}
+          textAlign="center"
+          color={headingColor}
+        >
+          Frequently Asked Questions
+        </Heading>
+        
+        <SimpleGrid
+          columns={{ base: 1, md: 2, lg: 3 }}
+          spacing={8}
+          width="100%"
+        >
+          {faqItems.map((item, index) => (
+            <Box
+              key={index}
+              bg={cardBg}
+              p={8}
+              borderRadius="xl"
+              boxShadow="md"
+              transition="transform 0.3s"
+              _hover={{ transform: 'translateY(-5px)' }}
+            >
+              <VStack align="start" spacing={4}>
+                <Heading
+                  as="h3"
+                  size="md"
+                  color={questionColor}
+                >
+                  {item.question}
+                </Heading>
+                <Text color={textColor}>
+                  {item.answer}
+                </Text>
+              </VStack>
+            </Box>
+          ))}
+        </SimpleGrid>
+      </Container>
+    </Box>
   );
 };
 

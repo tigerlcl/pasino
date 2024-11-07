@@ -1,17 +1,18 @@
 import React from 'react';
 import Hero from '../components/Hero';
 import CERTSection from '../components/CERTSection';
-import '../styles/Home.css';
+import FeaturedPapers from '../components/FeaturedPapers';
+import Footer from '../components/Footer';
+import { Box } from '@chakra-ui/react';
 
 const Home = () => {
   return (
-    <div className="home">
+    <Box as="main">
       <Hero />
       <CERTSection />
-      <div className="disclaimer">
-        <p>Prototype design, no commercial use. Love from DIAL</p>
-      </div>
-    </div>
+      <FeaturedPapers />
+      <Footer />
+    </Box>
   );
 };
 
