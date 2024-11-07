@@ -1,92 +1,81 @@
 import React from 'react';
-import '../styles/CERTSection.css';
+import {
+  Box,
+  Container,
+  Heading,
+  SimpleGrid,
+  VStack,
+  Text,
+  useColorMode
+} from '@chakra-ui/react';
 
 const CERTSection = () => {
+  const { colorMode } = useColorMode();
+  const sectionBg = colorMode === 'light' ? 'gray.100' : 'gray.800';
+  const bgColor = colorMode === 'light' ? 'white' : 'gray.700';
+  const textColor = colorMode === 'light' ? 'gray.600' : 'gray.300';
+  const headingColor = colorMode === 'light' ? 'gray.700' : 'white';
+
   const principles = [
     {
       title: "Community",
       description: "Connect with researchers worldwide in our prediction community",
-      color: "#264653"
+      color: "#ef7c8e"
     },
     {
       title: "Entertainment",
       description: "Make paper predictions fun and engaging while earning credits",
-      color: "#2A9D8F"
+      color: "#8e98f5"
     },
     {
       title: "Research",
       description: "Stay updated with the latest research papers under review",
-      color: "#E9C46A"
+      color: "#008585"
     },
     {
       title: "Training",
-      description: "Improve your prediction skills through continuous participation",
-      color: "#F4A261"
-    }
-  ];
-
-  const featuredPapers = [
-    {
-      title: "Deep Learning in Computer Vision",
-      keywords: ["AI", "Computer Vision", "Neural Networks"],
-      acceptCredits: 100,
-      rejectCredits: 50,
-      deadline: "2024-03-15"
-    },
-    {
-      title: "Quantum Computing Advances",
-      keywords: ["Quantum", "Computing", "Physics"],
-      acceptCredits: 120,
-      rejectCredits: 60,
-      deadline: "2024-03-20"
+      description: "Train yourself with better acadamic sense on paper review ",
+      color: "#d8a7b1"
     }
   ];
 
   return (
-    <div className="cert-section">
-      <h2>Our Platform Principles</h2>
-      <div className="principles-grid">
-        {principles.map((principle, index) => (
-          <div 
-            key={index} 
-            className="principle-card"
-            style={{ backgroundColor: principle.color }}
-          >
-            <h3>{principle.title}</h3>
-            <p>{principle.description}</p>
-          </div>
-        ))}
-      </div>
-
-      <div className="featured-polls">
-        <h2>Featured Papers</h2>
-        <div className="polls-container">
-          {featuredPapers.map((paper, index) => (
-            <div key={index} className="poll-card">
-              <h3>{paper.title}</h3>
-              <div className="keywords">
-                {paper.keywords.map((keyword, kidx) => (
-                  <span key={kidx}>{keyword}</span>
-                ))}
-              </div>
-              <div className="bid-stats">
-                <div className="accept-pool">
-                  <button className="accept-btn">Accept</button>
-                  <span>Credits: {paper.acceptCredits}</span>
-                </div>
-                <div className="reject-pool">
-                  <button className="reject-btn">Reject</button>
-                  <span>Credits: {paper.rejectCredits}</span>
-                </div>
-              </div>
-              <div className="deadline">
-                Deadline: {paper.deadline}
-              </div>
-            </div>
+    <Box as="section" py={20} bg={sectionBg}>
+      <Container maxW="container.xl">
+        <Heading
+          as="h2"
+          size="xl"
+          textAlign="center"
+          color={headingColor}
+          mb={12}
+        >
+          Our CERT Principles
+        </Heading>
+        <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8}>
+          {principles.map((principle, index) => (
+            <Box
+              key={index}
+              bg={bgColor}
+              p={6}
+              borderRadius="xl"
+              boxShadow="md"
+              transition="transform 0.3s"
+              _hover={{ transform: 'translateY(-5px)' }}
+              borderTop={`4px solid ${principle.color}`} // Added color to the upper bound
+            >
+              <VStack align="start" spacing={4}>
+                <Heading as="h3" size="md" color={principle.color}>
+                  {principle.title}
+                </Heading>
+                <Text color={textColor}>
+                  {principle.description}
+                </Text>
+              </VStack>
+            </Box>
           ))}
-        </div>
-      </div>
-    </div>
+        </SimpleGrid>
+      </Container>
+    </Box>
   );
 };
 
