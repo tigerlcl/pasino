@@ -29,11 +29,12 @@ const Profile = () => {
   const textColor = colorMode === 'light' ? 'gray.600' : 'gray.300';
   const headingColor = colorMode === 'light' ? 'gray.700' : 'white';
 
+  // TODO: Update stats from database
   const stats = [
-    { label: 'Total Predictions', value: '156' },
-    { label: 'Correct Predictions', value: '89' },
-    { label: 'Success Rate', value: '57%' },
-    { label: 'DialCoins Balance', value: '2,450', icon: CoinIcon }
+    { label: 'Total Predictions', value: '15' },
+    { label: 'Correct Predictions', value: '8' },
+    { label: 'Success Rate', value: `${((8 / 15) * 100).toFixed(0)}%` },
+    { label: 'DialCoins Balance', value: '245', icon: CoinIcon }
   ];
 
   const biddingHistory = [
@@ -53,13 +54,26 @@ const Profile = () => {
     }
   ];
 
+  const createdCanvas = [
+    {
+      title: 'Exploring Quantum Computing',
+      dateCreated: '2024-01-20',
+      status: 'Published'
+    },
+    {
+      title: 'Advancements in AI Ethics',
+      dateCreated: '2024-02-05',
+      status: 'Pending review'
+    }
+  ];
+
   return (
     <Container maxW="container.xl" py={12}>
       <VStack spacing={12} align="stretch">
         {/* Profile Header */}
         <Box textAlign="center">
           <Heading as="h1" size="xl" color={headingColor} mb={6}>
-            My Profile
+            Ti Cool
           </Heading>
           
           {/* Social Links */}
@@ -140,6 +154,38 @@ const Profile = () => {
                       {bid.result}
                     </Td>
                     <Td color={textColor}>{bid.date}</Td>
+                  </Tr>
+                ))}
+              </Tbody>
+            </Table>
+          </Box>
+        </Box>
+
+        {/* Created Panvas */}
+        <Box>
+          <Heading as="h2" size="lg" color={headingColor} mb={6}>
+            Published Panvas
+          </Heading>
+          <Box
+            bg={bgColor}
+            borderRadius="lg"
+            boxShadow="sm"
+            overflow="hidden"
+          >
+            <Table variant="simple">
+              <Thead>
+                <Tr>
+                  <Th>Title</Th>
+                  <Th>Date Created</Th>
+                  <Th>Status</Th>
+                </Tr>
+              </Thead>
+              <Tbody>
+                {createdCanvas.map((canvas, index) => (
+                  <Tr key={index}>
+                    <Td color={textColor}>{canvas.title}</Td>
+                    <Td color={textColor}>{canvas.dateCreated}</Td>
+                    <Td color={textColor}>{canvas.status}</Td>
                   </Tr>
                 ))}
               </Tbody>
