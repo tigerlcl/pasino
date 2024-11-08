@@ -84,7 +84,6 @@ const Header = () => {
             display={{ base: 'none', md: 'flex' }}
             height="100%"
             alignItems="center"
-            boxShadow="md"
             bg={colorMode === 'dark' ? 'gray.700' : 'gray.100'}
             borderRadius="lg"
           >
