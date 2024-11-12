@@ -3,114 +3,149 @@ import {
   Box,
   Container,
   Heading,
-  SimpleGrid,
-  VStack,
-  Text,
-  Tag,
+  useColorMode,
   HStack,
-  Button,
-  useColorMode
+  Icon,
 } from '@chakra-ui/react';
-import CoinIcon from './CoinIcon';
+import { keyframes } from '@emotion/react';
+import PaperBidCard from './PaperBidCard';
+import { FaFileAlt } from 'react-icons/fa';
+
+const slideAnimation = keyframes`
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+`;
 
 const FeaturedPapers = () => {
   const { colorMode } = useColorMode();
   const sectionBg = colorMode === 'dark' ? 'gray.900' : 'gray.50';
-  const bgColor = colorMode === 'dark' ? 'gray.800' : 'white';
-  const textColor = colorMode === 'dark' ? 'gray.100' : 'gray.600';
   const headingColor = colorMode === 'dark' ? 'white' : 'gray.800';
 
   const featuredPapers = [
     {
-      title: "Deep Learning in Computer Vision",
-      keywords: ["AI", "Computer Vision", "Neural Networks"],
-      acceptCredits: 100,
-      rejectCredits: 50,
-      deadline: "2024-03-15",
-      conference: "CVPR 2024"
+      title: "Attention is All you Need",
+      keywords: ["AI", "Machine Learning", "Natural Language Processing"],
+      acceptCredits: 500,
+      rejectCredits: 75,
+      deadline: "2025-04-01",
+      conference: "NeurIPS 2024",
+      totalUsers: 200,
+      totalCoins: 25000,
+      result: "TBA"
     },
     {
-      title: "Quantum Computing Advances",
-      keywords: ["Quantum", "Computing", "Physics"],
-      acceptCredits: 120,
-      rejectCredits: 60,
-      deadline: "2024-03-20",
-      conference: "Nature Physics"
+      title: "Accurate structure prediction with AlphaFold 3",
+      keywords: ["Biomolecular", "AlphaFold", "Structure"],
+      acceptCredits: 100,
+      rejectCredits: 75,
+      deadline: "2025-04-15",
+      conference: "Nature Biotechnology",
+      totalUsers: 250,
+      totalCoins: 30000,
+      result: "TBA"
+    },
+    {
+      title: "Deep Residual Learning for Image Recognition",
+      keywords: ["Deep Learning", "Image Recognition", "ResNet"],
+      acceptCredits: 200,
+      rejectCredits: 10,
+      deadline: "2025-05-01",
+      conference: "CVPR 2024",
+      totalUsers: 300,
+      totalCoins: 40000,
+      result: "TBA"
     }
   ];
 
+  // Create a seamless infinite loop by duplicating the array multiple times
+  const allPapers = [...featuredPapers, ...featuredPapers, ...featuredPapers, ...featuredPapers];
+
   return (
-    <Box width="100%" py={20} bg={sectionBg}>
+    <Box width="100%" py={20} bg={sectionBg} overflow="hidden">
       <Container maxW="container.xl">
-        <Heading
-          as="h2"
-          size="xl"
-          textAlign="center"
-          color={headingColor}
-          mb={12}
+        <HStack 
+          justify="center" 
+          mb={12} 
+          spacing={3}
         >
-          Featured Papers
-        </Heading>
-        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
-          {featuredPapers.map((paper, index) => (
-            <Box
-              key={index}
-              bg={bgColor}
-              p={6}
-              borderRadius="xl"
-              boxShadow="md"
-              transition="transform 0.2s"
-              _hover={{ transform: 'translateY(-4px)' }}
-            >
-              <VStack align="stretch" spacing={4}>
-                <Heading as="h3" size="md" color={headingColor}>
-                  {paper.title}
-                </Heading>
-
-                <Tag size="md" colorScheme="teal" alignSelf="flex-start">
-                  {paper.conference}
-                </Tag>
-
-                <HStack wrap="wrap" spacing={2}>
-                  {paper.keywords.map((keyword, idx) => (
-                    <Tag key={idx} size="sm" colorScheme="gray">
-                      {keyword}
-                    </Tag>
-                  ))}
-                </HStack>
-
-                <HStack spacing={4} width="100%" justify="space-between">
-                  <HStack spacing={4}>
-                    <Button colorScheme="green" size="sm">
-                      Accept
-                    </Button>
-                    <HStack>
-                      <CoinIcon />
-                      <Text>{paper.acceptCredits}</Text>
-                    </HStack>
-                  </HStack>
-
-                  <HStack spacing={4}>
-                    <Button colorScheme="red" size="sm">
-                      Reject
-                    </Button>
-                    <HStack>
-                      <CoinIcon />
-                      <Text>{paper.rejectCredits}</Text>
-                    </HStack>
-                  </HStack>
-                </HStack>
-
-                <Text fontSize="sm" color={textColor}>
-                  Deadline: {paper.deadline}
-                </Text>
-              </VStack>
-            </Box>
-          ))}
-        </SimpleGrid>
+          <Icon 
+            as={FaFileAlt} 
+            w={8} 
+            h={8} 
+            color={colorMode === 'dark' ? 'blue.200' : 'blue.500'} 
+          />
+          <Heading
+            as="h2"
+            size="xl"
+            textAlign="center"
+            color={headingColor}
+          >
+            Featured Papers
+          </Heading>
+        </HStack>
+        
+        <Box
+          sx={{
+            position: 'relative',
+            width: '100%',
+            height: '400px',
+            overflowX: 'hidden',
+            cursor: 'pointer',
+            '&::after': {
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: 'transparent',
+              transition: 'background 0.3s ease',
+              pointerEvents: 'none',
+            },
+            '&:hover::after': {
+              background: colorMode === 'dark' 
+                ? 'rgba(255, 255, 255, 0.05)' 
+                : 'rgba(0, 0, 0, 0.02)',
+            }
+          }}
+        >
+          <Box
+            sx={{
+              display: 'flex',
+              gap: '2rem',
+              position: 'absolute',
+              animation: `${slideAnimation} 30s linear infinite`,
+              transition: 'all 0.3s ease',
+              '&:hover': {
+                animationPlayState: 'paused',
+                transform: 'scale(1.01)',
+              }
+            }}
+          >
+            {allPapers.map((paper, index) => (
+              <Box
+                key={index}
+                sx={{
+                  flex: '0 0 auto',
+                  width: '400px',
+                  transition: 'transform 0.3s ease',
+                  _hover: {
+                    transform: 'translateY(-4px)',
+                  }
+                }}
+              >
+                <PaperBidCard {...paper} />
+              </Box>
+            ))}
+          </Box>
+        </Box>
       </Container>
     </Box>
   );
 };
 
-export default FeaturedPapers; 
+export default FeaturedPapers;

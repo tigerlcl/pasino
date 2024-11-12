@@ -5,9 +5,12 @@ import {
   Heading,
   SimpleGrid,
   VStack,
+  HStack,
   Text,
+  Icon,
   useColorMode
 } from '@chakra-ui/react';
+import { FaLightbulb } from 'react-icons/fa';
 
 const CERTSection = () => {
   const { colorMode } = useColorMode();
@@ -42,15 +45,11 @@ const CERTSection = () => {
   return (
     <Box as="section" py={20} bg={sectionBg}>
       <Container maxW="container.xl">
-        <Heading
-          as="h2"
-          size="xl"
-          textAlign="center"
-          color={headingColor}
-          mb={12}
-        >
-          Our CERT Principles
-        </Heading>
+        <HStack justify="center" mb={6}>
+              <Icon as={FaLightbulb} w={8} h={8} color="yellow.400" />
+          <Heading size="2xl">Our CERT Principles</Heading>
+        </HStack>
+
         <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8}>
           {principles.map((principle, index) => (
             <Box
