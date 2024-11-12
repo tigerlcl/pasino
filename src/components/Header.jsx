@@ -29,6 +29,7 @@ const Header = () => {
 
   const menuItems = [
     { name: 'Home', path: '/' },
+    { name: 'About Us', path: '/about' },
     { name: 'Rules', path: '/rules' },
     { name: 'Paper Arena', path: '/arena' },
     { name: 'My Profile', path: '/profile' },

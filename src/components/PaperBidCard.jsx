@@ -8,7 +8,8 @@ import {
   HStack,
   Tag,
   useColorMode,
-  Icon
+  Icon,
+  Flex
 } from '@chakra-ui/react';
 import { FaCrown, FaUsers, FaCoins } from 'react-icons/fa';
 import CoinIcon from './CoinIcon';
@@ -89,27 +90,29 @@ const PaperBidCard = ({ title, keywords, acceptCredits, rejectCredits, deadline,
           </HStack>
         </HStack>
 
-        <HStack spacing={4} width="100%" justify="space-between">
-          <VStack spacing={1}>
-            <Button colorScheme="green" size="sm" width="100%">
-              Accept {isFinished && winner === 'Accept' && <Icon as={FaCrown} ml={2} />}
-            </Button>
-            <HStack>
-              <CoinIcon />
-              <Text>x{acceptRate}</Text>
-            </HStack>
-          </VStack>
+        <Box width="100%">
+          <Flex justify="center" gap={8}>
+            <VStack spacing={1}>
+              <Button colorScheme="green" size="sm" width="80px">
+                Accept {isFinished && winner === 'Accept' && <Icon as={FaCrown} ml={2} />}
+              </Button>
+              <HStack>
+                <CoinIcon />
+                <Text>x{acceptRate}</Text>
+              </HStack>
+            </VStack>
 
-          <VStack spacing={1}>
-            <Button colorScheme="red" size="sm" width="100%">
-              Reject {isFinished && winner === 'Reject' && <Icon as={FaCrown} ml={2} />}
-            </Button>
-            <HStack>
-              <CoinIcon />
-              <Text>x{rejectRate}</Text>
-            </HStack>
-          </VStack>
-        </HStack>
+            <VStack spacing={1}>
+              <Button colorScheme="red" size="sm" width="80px">
+                Reject {isFinished && winner === 'Reject' && <Icon as={FaCrown} ml={2} />}
+              </Button>
+              <HStack>
+                <CoinIcon />
+                <Text>x{rejectRate}</Text>
+              </HStack>
+            </VStack>
+          </Flex>
+        </Box>
 
         <Text fontSize="sm" color={textColor}>
           Deadline: {deadline}
