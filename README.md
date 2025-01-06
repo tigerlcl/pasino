@@ -1,12 +1,12 @@
-# Panvas - Research Paper Prediction Platform
+# PASINO - Research Paper Prediction Platform
 
 <p align="center">
-  <img src="public/web_icon.png" alt="Panvas Logo" width="200"/>
+  <img src="public/web_icon.png" alt="pasino Logo" width="200"/>
 </p>
 
 
 ## About
-Panvas (Paper + Canvas) is an innovative platform where researchers and enthusiasts can predict the acceptance outcomes of academic papers under review. By combining academic insight with engaging prediction mechanics, we create a unique space for the research community to interact with upcoming publications.
+PASINO (Paper + Canvas) is an innovative platform where researchers and enthusiasts can predict the acceptance outcomes of academic papers under review. By combining academic insight with engaging prediction mechanics, we create a unique space for the research community to interact with upcoming publications.
 
 > A project that is made by nearly 100% AI
 
@@ -48,8 +48,8 @@ Panvas (Paper + Canvas) is an innovative platform where researchers and enthusia
 ### Installation
 1. Clone the repository
 ```bash
-git clone https://github.com/tigerlcl/panvas.git
-cd panvas
+git clone https://github.com/tigerlcl/PASINO.git
+cd PASINO
 ```
 
 2. Install dependencies
